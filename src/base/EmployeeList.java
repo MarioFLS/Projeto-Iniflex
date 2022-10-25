@@ -77,22 +77,24 @@ public class EmployeeList {
   }
 
   public void printBirthday() {
-    List<Employee> birthday = employeesList.stream()
+    List<Employee> employees = employeesList.stream()
         .filter(e -> e.getBirthDate().getMonthValue() == 10 || e.getBirthDate().getMonthValue() == 12)
         .collect(Collectors.toList());
 
-    for (Employee employee : birthday) {
+    for (Employee employee : employees) {
       System.out.println(employee.toString());
     }
   }
 
   public void printAdultEmployees() {
-    List<Employee> birthday = employeesList.stream()
-        .filter(e -> (LocalDate.now().getYear() - e.getBirthDate().getYear()) >= 18)
+    Integer currentYear = LocalDate.now().getYear();
+    List<Employee> employees = employeesList.stream()
+        .filter(e -> (currentYear - e.getBirthDate().getYear()) >= 18)
         .collect(Collectors.toList());
 
-    for (Employee employee : birthday) {
-      System.out.println(employee.toString());
+    for (Employee employee : employees) {
+      System.out
+          .println("Nome: " + employee.getName() + ", Idade: " + (currentYear - employee.getBirthDate().getYear()));
     }
   }
 }
