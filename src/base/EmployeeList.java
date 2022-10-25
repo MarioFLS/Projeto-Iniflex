@@ -29,7 +29,7 @@ public class EmployeeList {
       new Employee("Laura", LocalDate.parse("08/07/1994", fmt), BigDecimal.valueOf(3017.45), "Gerente"),
       new Employee("Heloísa", LocalDate.parse("24/05/2003", fmt), BigDecimal.valueOf(1605.85), "Eletricista"),
       new Employee("Helena", LocalDate.parse("02/09/1996", fmt), BigDecimal.valueOf(2799.93), "Gerente"),
-      new Employee("Vanessa", LocalDate.parse("10/12/1998", fmt), BigDecimal.valueOf(2799.93), "Gerente"),
+      new Employee("Vanessa", LocalDate.parse("10/12/2008", fmt), BigDecimal.valueOf(2799.93), "Coordenador"),
       new Employee("Mario", LocalDate.parse("18/04/2002", fmt), BigDecimal.valueOf(4000.00), "Desenvolvedor Java")));
 
   public void addEmploy(Employee employee) {
@@ -81,7 +81,16 @@ public class EmployeeList {
         .filter(e -> e.getBirthDate().getMonthValue() == 10 || e.getBirthDate().getMonthValue() == 12)
         .collect(Collectors.toList());
 
-    System.out.println("Funcionarios Aniversáriantes do mês de Outubro (10) e de Dezembro(12)");
+    for (Employee employee : birthday) {
+      System.out.println(employee.toString());
+    }
+  }
+
+  public void printAdultEmployees() {
+    List<Employee> birthday = employeesList.stream()
+        .filter(e -> (LocalDate.now().getYear() - e.getBirthDate().getYear()) >= 18)
+        .collect(Collectors.toList());
+
     for (Employee employee : birthday) {
       System.out.println(employee.toString());
     }
