@@ -29,4 +29,9 @@ public class Employee extends Person {
     this.occupation = occupation;
   }
 
+  public void increaseSalary(Double increase) {
+    double increaseValue = increase / 100;
+    this.salary = this.salary.add(this.salary.multiply(BigDecimal.valueOf(increaseValue)));
+  }
+
 }
