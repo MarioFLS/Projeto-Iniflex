@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import entities.Employee;
 
@@ -29,8 +30,14 @@ public class EmployeeList {
     employeesList.add(employee);
   }
 
-  public void removeEmploy(Employee employee) {
-    employeesList.remove(employee);
+  public void removeEmploy(String name) {
+    employeesList.removeIf(employee -> Objects.equals(employee.getName().toLowerCase(), name.toLowerCase()));
+  }
+
+  public void salaryIncrease(Double increase) {
+    for (Employee employee : employeesList) {
+      employee.increaseSalary(increase);
+    }
   }
 
   public void printEmployees() {
