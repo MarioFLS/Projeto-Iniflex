@@ -118,4 +118,14 @@ public class EmployeeList {
 
     System.out.println("Valor total dos salários: R$ " + formatNumber.format(sum.setScale(2, RoundingMode.HALF_EVEN)));
   }
+
+  public void minimumSalaries() {
+    Map<String, BigDecimal> employees = employeesList.stream()
+        .collect(Collectors.toMap(e -> e.getName(),
+            e -> e.getSalary().divide(BigDecimal.valueOf(1212), 2, RoundingMode.FLOOR)));
+
+    for (Map.Entry<String, BigDecimal> employee : employees.entrySet()) {
+      System.out.println(employee.getKey() + " - Quantidade: " + employee.getValue());
+    }
+  }
 }

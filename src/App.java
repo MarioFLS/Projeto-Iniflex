@@ -55,5 +55,19 @@ public class App {
         System.out.println("Funcionarios por Ordem Alfabética");
         System.out.println();
         employees.printAlphabeticalOrder();
+
+        System.out.println("=============================================================================");
+        System.out.println();
+
+        System.out.println("Soma dos salários; Lembrando que eles foram aumentando em 10%");
+        System.out.println();
+        employees.sumOfSalaries();
+
+        System.out.println("=============================================================================");
+        System.out.println();
+
+        System.out.println("Quantos salários mínimos cada funcionário ganha; Sendo o salário Minimo R$1212.00");
+        System.out.println();
+        employees.minimumSalaries();
     }
 }
