@@ -6,9 +6,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import entities.Employee;
 
@@ -48,11 +52,26 @@ public class EmployeeList {
     System.out.println();
     System.out.println("-----------------------------------------------------------------------------");
     for (Employee employee : employeesList) {
-      System.out.format("%10s\t %15s\t %10s\t %15s",
+      System.out.format("%10s\t %15s\t R$ %10s\t %15s",
           employee.getName(), employee.getBirthDate().format(fmt), formatNumber.format(employee.getSalary()),
           employee.getOccupation());
       System.out.println();
     }
     System.out.println("-----------------------------------------------------------------------------");
+  }
+
+  public void printOccupation() {
+    Map<String, List<Employee>> occupation = new HashMap<>();
+    for (Employee employee : employeesList) {
+      occupation.put(employee.getOccupation(), employeesList.stream()
+          .filter(e -> Objects.equals(e.getOccupation(), employee.getOccupation())).collect(Collectors.toList()));
+    }
+
+    for (Map.Entry<String, List<Employee>> employee : occupation.entrySet()) {
+      System.out.print(employee.getKey() + ": ");
+      employee.getValue().forEach(e -> System.out.print(e.getName() + ", "));
+      System.out.println();
+    }
+
   }
 }
