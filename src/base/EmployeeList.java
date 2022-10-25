@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import entities.Employee;
@@ -46,20 +45,24 @@ public class EmployeeList {
     }
   }
 
-  public void printEmployees() {
+  public void formatPrintEmployee(List<Employee> employees) {
     Locale localUSD = new Locale("pt", "BR");
     NumberFormat formatNumber = NumberFormat.getInstance(localUSD);
     System.out.println("-----------------------------------------------------------------------------");
     System.out.printf("%10s\t %15s\t %10s\t %15s", "Nome", "Data de Nascimento", "Salário", "Função");
     System.out.println();
     System.out.println("-----------------------------------------------------------------------------");
-    for (Employee employee : employeesList) {
+    for (Employee employee : employees) {
       System.out.format("%10s\t %15s\t R$ %10s\t %15s",
           employee.getName(), employee.getBirthDate().format(fmt), formatNumber.format(employee.getSalary()),
           employee.getOccupation());
       System.out.println();
     }
     System.out.println("-----------------------------------------------------------------------------");
+  }
+
+  public void printEmployees() {
+    formatPrintEmployee(employeesList);
   }
 
   public void printOccupation() {
@@ -96,5 +99,12 @@ public class EmployeeList {
       System.out
           .println("Nome: " + employee.getName() + ", Idade: " + (currentYear - employee.getBirthDate().getYear()));
     }
+  }
+
+  public void printAlphabeticalOrder() {
+    List<Employee> employees = employeesList.stream()
+        .sorted((a, b) -> a.getName().compareTo(b.getName())).collect(Collectors.toList());
+
+    formatPrintEmployee(employees);
   }
 }
