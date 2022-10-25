@@ -1,6 +1,7 @@
 package base;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,8 @@ import entities.Employee;
 
 public class EmployeeList {
   private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+  private final NumberFormat formatNumber = NumberFormat.getInstance(new Locale("pt", "BR"));
+
   private List<Employee> employeesList = new ArrayList<>(Arrays.asList(
       new Employee("Maria", LocalDate.parse("18/10/2000", fmt), BigDecimal.valueOf(2099.44), "Operador"),
       new Employee("João", LocalDate.parse("12/05/1990", fmt), BigDecimal.valueOf(2284.38), "Operador"),
@@ -46,8 +49,6 @@ public class EmployeeList {
   }
 
   public void formatPrintEmployee(List<Employee> employees) {
-    Locale localUSD = new Locale("pt", "BR");
-    NumberFormat formatNumber = NumberFormat.getInstance(localUSD);
     System.out.println("-----------------------------------------------------------------------------");
     System.out.printf("%10s\t %15s\t %10s\t %15s", "Nome", "Data de Nascimento", "Salário", "Função");
     System.out.println();
@@ -106,5 +107,15 @@ public class EmployeeList {
         .sorted((a, b) -> a.getName().compareTo(b.getName())).collect(Collectors.toList());
 
     formatPrintEmployee(employees);
+  }
+
+  public void sumOfSalaries() {
+    BigDecimal sum = BigDecimal.valueOf(0);
+
+    for (Employee employee : employeesList) {
+      sum = sum.add(employee.getSalary());
+    }
+
+    System.out.println("Valor total dos salários: R$ " + formatNumber.format(sum.setScale(2, RoundingMode.HALF_EVEN)));
   }
 }
