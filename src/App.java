@@ -20,6 +20,13 @@ public class App {
                 break;
             }
             menu.menuChoice(choise, employees);
+            System.out.println("Deseja Continuar?");
+            System.out.print("[0] Sair; Se Deseja continuar, digite qualquer valor: ");
+
+            int response = Integer.parseInt(sc.next());
+
+            if (response == 0)
+                break;
 
         }
         sc.close();

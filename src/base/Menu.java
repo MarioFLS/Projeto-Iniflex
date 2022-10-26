@@ -17,15 +17,17 @@ public class Menu {
     System.out.println("2. Adicionar Funcionário");
     System.out.println("3. Deletar Funcinário");
     System.out.println("4. Aumentar Salário");
-    System.out.println("5. Mostrar Ocupação dos funciários");
+    System.out.println("5. Mostrar Função dos funciários");
     System.out
-        .println("6. Mostrar Funciários que fazem aniversário no mês escolhido (O mês deve ser posto como um número)");
+        .println(
+            "6. Mostrar Funciários que fazem aniversário no mês escolhido (O mês deve ser posto como um número)");
     System.out.println("7. Mostrar funciários Acima dos 18 anos");
     System.out.println("8. Mostrar funciários em ordem Alfabética");
     System.out.println("9. Mostrar soma do salário dos funciários");
     System.out.println("10. Mostrar quantos salários minimos cada funciário ganha (Salário minimo: 1212,00)");
     System.out.println("0. Exit");
     System.out.println("============================================================");
+
   }
 
   public Employee newEmployee() {
@@ -51,8 +53,8 @@ public class Menu {
         employees.printEmployees();
         break;
       case 2:
-        System.out.println("Usuário Criado");
         employees.addEmploy(newEmployee());
+        System.out.println("Usuário Criado");
         break;
       case 3:
         System.out.print("Digite o nome do usuário: ");
@@ -64,6 +66,28 @@ public class Menu {
         Double valueIncrease = input.nextDouble();
         employees.salaryIncrease(valueIncrease);
         break;
+      case 5:
+        System.out.print("Função dos Funciários: ");
+        employees.printOccupation();
+        break;
+      case 6:
+        System.out.print("Funcionários Aniversáriantes: ");
+        Integer month = input.nextInt();
+        employees.printBirthday(month);
+        break;
+      case 7:
+        employees.printAdultEmployees();
+        break;
+      case 8:
+        employees.printAlphabeticalOrder();
+        break;
+      case 9:
+        employees.sumOfSalaries();
+        break;
+      case 10:
+        employees.minimumSalaries();
+        break;
+
       default:
         break;
     }

@@ -87,14 +87,19 @@ public class EmployeeList {
     }
   }
 
-  public void printBirthday() {
-    List<Employee> employees = employeesList.stream()
-        .filter(e -> e.getBirthDate().getMonthValue() == 10 || e.getBirthDate().getMonthValue() == 12)
-        .collect(Collectors.toList());
+  public void printBirthday(Integer month) {
+    if (month > 0 && month <= 12) {
+      List<Employee> employees = employeesList.stream()
+          .filter(e -> e.getBirthDate().getMonthValue() == month)
+          .collect(Collectors.toList());
 
-    for (Employee employee : employees) {
-      System.out.println(employee.toString());
+      for (Employee employee : employees) {
+        System.out.println(employee.toString());
+      }
+    } else {
+      System.out.println("Mês Inválido");
     }
+
   }
 
   public void printAdultEmployees() {
