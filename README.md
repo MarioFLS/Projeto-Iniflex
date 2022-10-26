@@ -17,6 +17,12 @@ Ter Java 11 na sua maquina. Baixe por aqui [Azul](https://www.azul.com/downloads
 
 Iniciar o projeto na sua IDE de escolha ou por linha de comando!
 
+## Duas Branchs
+A branch **dev** possui apenas código para execução!
+
+Ou seja, iniciando projeto por essa branch, todas as possibilidade do código rodam autommaticamente.
+
+Feito para o teste - Mão na Massa!
 
 ## Estou aqui para Ajudar!
 Havendo algum problema. Entre em contato comigo, poderei auxiliar a resolver os problemas!
