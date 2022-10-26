@@ -1,18 +1,29 @@
-## Getting Started
+# Projeto Iniflex
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Descrição
+O projeto busca simular a organização dos funcionários!
 
-## Folder Structure
+A aplicação Permite:
 
-The workspace contains two folders by default, where:
+-  Ter uma experiência de coordenação de empresa;
+-  Podendo contratar ou demitir funcionários;
+-  Fazer pesquisas sobre os funcionários e mais;
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Como utilizar
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Você só precisar clonar esse repositório na sua maquina!
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Ter Java 11 na sua maquina. Baixe por aqui [Azul](https://www.azul.com/downloads/?package=jdk#download-openjdk)
 
-## Dependency Management
+Iniciar o projeto na sua IDE de escolha ou por linha de comando!
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Branch dev
+A branch **dev** possui apenas código para execução!
+
+Ou seja, iniciando projeto por essa branch, todas as possibilidades do código rodam automaticamente.
+
+Feito para o teste - Mão na Massa!
+
+## Estou aqui para Ajudar!
+Havendo algum problema. Entre em contato comigo, poderei auxiliar a resolver os problemas!
+Isso também vale para dúvidas de funcionamento!
