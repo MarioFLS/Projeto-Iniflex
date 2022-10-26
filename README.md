@@ -20,7 +20,7 @@ Iniciar o projeto na sua IDE de escolha ou por linha de comando!
 ## Duas Branchs
 A branch **dev** possui apenas código para execução!
 
-Ou seja, iniciando projeto por essa branch, todas as possibilidade do código rodam autommaticamente.
+Ou seja, iniciando projeto por essa branch, todas as possibilidades do código rodam automaticamente.
 
 Feito para o teste - Mão na Massa!
 
