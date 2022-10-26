@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import entities.Employee;
+import entities.Person;
 
 public class EmployeeList {
   private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -39,7 +40,13 @@ public class EmployeeList {
   }
 
   public void removeEmploy(String name) {
-    employeesList.removeIf(employee -> Objects.equals(employee.getName().toLowerCase(), name.toLowerCase()));
+    boolean isDeleted = employeesList
+        .removeIf(employee -> Objects.equals(employee.getName().toLowerCase(), name.toLowerCase()));
+    if (isDeleted) {
+      System.out.println(">>>>>> Usuário Deletado <<<<<<");
+    } else {
+      System.out.println(">>>>>> Usuário Não Encontrado <<<<<<");
+    }
   }
 
   public void salaryIncrease(Double increase) {
@@ -48,7 +55,7 @@ public class EmployeeList {
     }
   }
 
-  public void formatPrintEmployee(List<Employee> employees) {
+  private void formatPrintEmployee(List<Employee> employees) {
     System.out.println("-----------------------------------------------------------------------------");
     System.out.printf("%10s\t %15s\t %10s\t %15s", "Nome", "Data de Nascimento", "Salário", "Função");
     System.out.println();
@@ -121,7 +128,7 @@ public class EmployeeList {
 
   public void minimumSalaries() {
     Map<String, BigDecimal> employees = employeesList.stream()
-        .collect(Collectors.toMap(e -> e.getName(),
+        .collect(Collectors.toMap(Person::getName,
             e -> e.getSalary().divide(BigDecimal.valueOf(1212), 2, RoundingMode.FLOOR)));
 
     for (Map.Entry<String, BigDecimal> employee : employees.entrySet()) {
